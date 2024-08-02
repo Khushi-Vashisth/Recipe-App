@@ -10,6 +10,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  savedRecipes: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "recipes",
+      required: true,
+    },
+  ],
 });
 
 export const UserModel = mongoose.model("users", UserSchema);
