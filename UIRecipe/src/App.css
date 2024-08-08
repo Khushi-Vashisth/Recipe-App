@@ -10,6 +10,8 @@
 
 /* NAVBAR */
 .navbar {
+  position: sticky;
+  top: 0px;
   background-color: black;
   display: flex;
   justify-content: space-around;
@@ -58,7 +60,7 @@ input {
   width: 200px;
   height: 30px;
 }
-.formGroup label {
+label {
   font-size: x-large;
   font-weight: 700;
 }
@@ -69,10 +71,42 @@ input {
   border: 1px solid chocolate;
   box-shadow: 2px 2px 4px rgb(214, 134, 77);
 }
-input:focus {
+input:focus,
+textarea:focus {
   outline: 4px auto chocolate;
 }
 .login form button,
 .register form button {
   margin: 10px 0px;
+}
+
+/* create recipes */
+.create {
+  border: 1px solid rgb(197, 188, 188);
+  background-color: beige;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.createRecipe {
+  margin: 0px;
+  /* width: 100%; */
+}
+.createRecipe input,
+textarea {
+  width: 450px;
+  height: 40px;
+}
+.createRecipe input,
+textarea,
+label,
+button {
+  margin-top: 25px;
+}
+.create button {
+  width: 460px;
+  height: 40px;
+  margin: 25px 0px;
 }
