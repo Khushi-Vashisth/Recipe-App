@@ -38,6 +38,7 @@ function CreateRecipe() {
   return (
     <div className="createRecipe">
       <form className="create" onSubmit={HandleSubmit}>
+        <h2>About Recipe </h2>
         <label htmlFor="name">Recipe Name : </label>
         <input
           type="text"

@@ -4,9 +4,11 @@ import axios from "axios";
 import { getUserId } from "../getUser";
 
 function Home() {
-  let userID = getUserId();
   const [recipe, setRecipes] = useState([]);
-  const [savedRecipes, setSavedRecipes] = useState([]);
+  const [saveRecipes, setSavedRecipes] = useState({
+    data: { savedRecipes: [] },
+  });
+  console.log("Initial saveRecipes:", saveRecipes);
 
   useEffect(() => {
     let userID = getUserId();
@@ -15,7 +17,7 @@ function Home() {
       try {
         const response = await axios.get("http://localhost:8000/recipe");
         setRecipes(response.data);
-        // console.log(response);
+        // console.log("Recipes", response);
       } catch (err) {
         console.error(err);
       }
@@ -27,7 +29,7 @@ function Home() {
           `http://localhost:8000/recipe/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
-        console.log("saved recipes : ", response.data.savedRecipes);
+        console.log("saved recipes : ", response);
       } catch (err) {
         console.error(err);
       }
@@ -46,7 +48,7 @@ function Home() {
       });
       const updatedSavedRecipes = response.data.savedRecipes;
       setSavedRecipes(updatedSavedRecipes);
-      console.log("save or unsave", response.data);
+      console.log("save or unsave", response.data.savedRecipes);
     } catch (err) {
       console.error(err);
     }
@@ -55,19 +57,20 @@ function Home() {
   return (
     <div className="home">
       <h1>Recipes</h1>
-      <ul>
+      <ul className="items">
         {recipe.map((i) => (
           <li key={i._id} className="recipeList">
             <div className="titleRecipe">
               <h2>Recipe Name : {i.name}</h2>
               <span onClick={() => Handlesave(i._id)}>
-                {Array.isArray(savedRecipes) && savedRecipes.includes(i._id) ? (
+                {saveRecipes.includes(i._id) ? (
                   <i class="fa-solid fa-bookmark"></i>
                 ) : (
                   <i class="fa-regular fa-bookmark"></i>
                 )}
               </span>
             </div>
+
             <div>
               <p>
                 <b>To Be Noted </b>:{i.instructions}
@@ -78,7 +81,7 @@ function Home() {
                 <b>Ingredients</b> : {i.ingredients}
               </p>
             </div>
-            <div>
+            <div className="img">
               <img src={i.imageUrl} alt="Recipe" />
             </div>
             <div>

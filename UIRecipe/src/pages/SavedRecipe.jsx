@@ -26,7 +26,7 @@ function savedRecipe() {
   return (
     <div className="home">
       <h1>Saved Recipes</h1>
-      <ul>
+      <ul className="items">
         {savedRecipe.map((i) => (
           <li key={i._id} className="recipeList">
             <div className="titleRecipe">
