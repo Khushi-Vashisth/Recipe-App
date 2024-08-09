@@ -110,3 +110,30 @@ button {
   height: 40px;
   margin: 25px 0px;
 }
+
+/* Home */
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.recipeList {
+  width: 600px;
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding: 30px;
+  margin: 5px;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 1px solid rgb(175, 170, 170);
+  box-shadow: 4px 4px 6px rgb(180, 176, 176);
+  border-radius: 13px;
+}
+.recipeList img {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
