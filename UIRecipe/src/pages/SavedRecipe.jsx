@@ -1,8 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
+import axios from "axios";
+import { getUserId } from "../getUser";
 
-function SavedRecipe() {
-  return <div className="savedRecipe">SavedRecipe</div>;
+function savedRecipe() {
+  let userID = getUserId();
+  const [savedRecipe, setSavedRecipes] = useState([]);
+
+  useEffect(() => {
+    const fetchSavedRecipe = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/recipe/savedRecipes/${userID}`
+        );
+        setSavedRecipes(response.data.savedRecipes);
+        console.log("savedOne", response);
+        console.log("saved recipes : ", response.data.savedRecipes);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchSavedRecipe();
+  }, []);
+
+  return (
+    <div className="home">
+      <h1>Saved Recipes</h1>
+      <ul>
+        {savedRecipe.map((i) => (
+          <li key={i._id} className="recipeList">
+            <div className="titleRecipe">
+              <h2>Recipe Name : {i.name}</h2>
+            </div>
+            <div>
+              <p>
+                <b>To Be Noted </b>:{i.instructions}
+              </p>
+            </div>
+            <div>
+              <p>
+                <b>Ingredients</b> : {i.ingredients}
+              </p>
+            </div>
+            <div>
+              <img src={i.imageUrl} alt="Recipe" />
+            </div>
+            <div>
+              <h3>Cooking Time : {i.time} (minutes)</h3>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
-export default SavedRecipe;
+export default savedRecipe;

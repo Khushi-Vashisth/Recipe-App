@@ -117,12 +117,14 @@ button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: rgba(230, 201, 164, 0.856);
+  margin: 0;
+  padding: 0;
 }
 .recipeList {
-  width: 600px;
+  background-color: rgb(233, 203, 103);
+  width: 565px;
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
   padding: 30px;
   margin: 5px;
   flex-direction: column;
@@ -136,4 +138,13 @@ button {
   height: 400px;
   object-fit: cover;
   object-position: center;
+}
+span i {
+  font-size: xx-large;
+  font-weight: 900;
+}
+.titleRecipe {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

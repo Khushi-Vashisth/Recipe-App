@@ -27,7 +27,7 @@ const connectDB = async () => {
 connectDB();
 
 app.use("/auth", UserRouter);
-app.use("/recipes", reciperouter);
+app.use("/recipe", reciperouter);
 
 app.get("/", (req, res) => {
   res.send("welcome kd");
