@@ -3,7 +3,7 @@ import "../App.css";
 import axios from "axios";
 import { getUserId } from "../getUser";
 
-function savedRecipe() {
+function saveRecipe() {
   let userID = getUserId();
   const [savedRecipe, setSavedRecipes] = useState([]);
 
@@ -57,4 +57,4 @@ function savedRecipe() {
   );
 }
 
-export default savedRecipe;
+export default saveRecipe;
