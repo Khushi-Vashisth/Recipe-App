@@ -5,8 +5,6 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 function Auth() {
-  const ApiUrl = import.meta.env.VITE_API_URL;
-
   return (
     <div className="auth">
       r

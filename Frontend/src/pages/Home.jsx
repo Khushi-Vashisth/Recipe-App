@@ -69,7 +69,7 @@ function Home() {
             <div className="titleRecipe">
               <h2>Recipe Name : {i.name}</h2>
               <span onClick={() => Handlesave(i._id)}>
-                {saveRecipes.includes(i._id) ? (
+                {Array.isArray(saveRecipes) && saveRecipes.includes(i._id) ? (
                   <i class="fa-solid fa-bookmark"></i>
                 ) : (
                   <i class="fa-regular fa-bookmark"></i>
