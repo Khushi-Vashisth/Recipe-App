@@ -74,7 +74,7 @@ function Home() {
                 ) : (
                   <i class="fa-regular fa-bookmark"></i>
                 )} */}
-                {saveRecipes.data.savedRecipes.includes(i._id) ? (
+                {saveRecipes.data.savedRecipes.indexOf(i._id) !== -1 ? (
                   <i class="fa-solid fa-bookmark"></i>
                 ) : (
                   <i class="fa-regular fa-bookmark"></i>
