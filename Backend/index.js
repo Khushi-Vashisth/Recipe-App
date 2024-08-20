@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 dotenv.config();
-const port = 8000;
+const port = 8000 || process.env.PORT;
 
 const connectDB = async () => {
   try {

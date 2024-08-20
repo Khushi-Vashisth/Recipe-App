@@ -5,8 +5,11 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 function Auth() {
+  const ApiUrl = import.meta.env.VITE_API_URL;
+
   return (
     <div className="auth">
+      r
       <Login />
       <Register />
     </div>
@@ -18,9 +21,11 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   let HandleSubmit = async (event) => {
+    const ApiUrl = import.meta.env.VITE_API_URL;
+
     event.preventDefault();
     try {
-      await axios.post("http://localhost:8000/auth/register", {
+      await axios.post(ApiUrl + "auth/register", {
         username,
         password,
       });
@@ -69,9 +74,11 @@ const Login = () => {
   const [_, setCookies] = useCookies(["access_token"]);
 
   const HandleSubmit = async (event) => {
+    const ApiUrl = import.meta.env.VITE_API_URL;
+
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/auth/login", {
+      const response = await axios.post(ApiUrl + "auth/login", {
         username,
         password,
       });

@@ -5,6 +5,8 @@ import { getUserId } from "../getUser";
 import { useNavigate } from "react-router-dom";
 
 function CreateRecipe() {
+  const ApiUrl = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   const userID = getUserId();
   const [recipe, setRecipe] = useState({
@@ -26,7 +28,7 @@ function CreateRecipe() {
   const HandleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:8000/recipe", recipe);
+      const response = await axios.post(`${ApiUrl}recipe`, recipe);
       console.log(response);
       alert("Recipe Created Dear !");
       navigate("/");

@@ -9,9 +9,11 @@ function savedRecipe() {
 
   useEffect(() => {
     const fetchSavedRecipe = async () => {
+      const ApiUrl = import.meta.env.VITE_API_URL;
+
       try {
         const response = await axios.get(
-          `http://localhost:8000/recipe/savedRecipes/${userID}`
+          `${ApiUrl}recipe/savedRecipes/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
         console.log("savedOne", response);

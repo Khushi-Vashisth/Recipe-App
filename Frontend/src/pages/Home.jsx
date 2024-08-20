@@ -14,8 +14,10 @@ function Home() {
     let userID = getUserId();
 
     const fetchRecipe = async () => {
+      const ApiUrl = import.meta.env.VITE_API_URL;
+
       try {
-        const response = await axios.get("http://localhost:8000/recipe");
+        const response = await axios.get(ApiUrl + "recipe");
         setRecipes(response.data);
         // console.log("Recipes", response);
       } catch (err) {
@@ -24,9 +26,11 @@ function Home() {
     };
 
     const fetchSavedRecipe = async () => {
+      const ApiUrl = import.meta.env.VITE_API_URL;
+
       try {
         const response = await axios.get(
-          `http://localhost:8000/recipe/savedRecipes/ids/${userID}`
+          `${ApiUrl}recipe/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
         console.log("saved recipes : ", response);
@@ -42,7 +46,9 @@ function Home() {
     let userID = getUserId();
 
     try {
-      const response = await axios.put("http://localhost:8000/recipe", {
+      const ApiUrl = import.meta.env.VITE_API_URL;
+
+      const response = await axios.put(ApiUrl + "recipe", {
         userID,
         recipeID,
       });
